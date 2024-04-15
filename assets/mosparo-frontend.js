@@ -552,6 +552,8 @@ function mosparo(containerId, url, uuid, publicKey, options)
     }
 
     this.addHoneypotField = function (fieldName) {
+        const hpFieldCss = 'position: absolute !important; left: -9999px !important; top: -9999px !important;' +
+              ' opacity: 0 !important; width: 0 !important; height: 0 !important;';
         if (this.hpFieldElement !== null) {
             return;
         }
@@ -559,7 +561,7 @@ function mosparo(containerId, url, uuid, publicKey, options)
         this.hpFieldElement = document.createElement('input');
         this.hpFieldElement.setAttribute('type', 'text');
         this.hpFieldElement.setAttribute('name', fieldName);
-        this.hpFieldElement.setAttribute('style', 'position: absolute !important; left: -1000px !important; top: -1000px !important;');
+        this.hpFieldElement.setAttribute('style', hpFieldCss);
         this.hpFieldElement.setAttribute('autocomplete', 'one-time-code');
         this.hpFieldElement.setAttribute('tabindex', '-1');
         this.hpFieldElement.setAttribute('title', this.getMessage('hpLeaveEmpty'));
